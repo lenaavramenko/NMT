@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <title>CSS</title>
+    <1--http://beloweb.ru/novichkam/20-vpechatlyayushhih-css3-primerov-tehnik-i-bibliotek.html-->
+    <style>
+        body {
+            padding-top: 7rem;
+            background-color: #ddd;
+            color:#777;
+        }.align-template {
+             text-align: center;
+
+         }
+
+        .conteiner {padding: 30px; margin:50px 20px;}
+
+        li {
+            list-style-type: none;
+        }
+        ul {
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+
+        .news li  {
+            min-height: 30px;
+            display:block;
+        }
+
+        .news li p {
+            margin:0;
+            padding:0;
+        }
+        form{
+            position: absolute;
+            top:30%;
+            left: 30%;
+        }
+
+        form:focus{
+            top:-300px;
+        }
+        input {
+            outline: none;
+            margin: 0px 10px 10px 0px;
+        }
+        input[type=text] {
+            -webkit-appearance: textfield;
+            -webkit-box-sizing: content-box;
+            font-family: inherit;
+            font-size: 100%;
+        }
+        input::-webkit-search-decoration,
+        input::-webkit-search-cancel-button {
+            display: none; /* remove the search and cancel icon */
+        }
+        input[type=text] {
+            background: #ededed url(search-icon.png) no-repeat 9px center;
+            border: solid 1px #ccc;
+            padding: 9px 10px 9px 32px;
+            width: 325px;
+
+            -webkit-border-radius: 10em;
+            -moz-border-radius: 10em;
+            border-radius: 10em;
+
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            transition: all .5s;
+        }
+        input[type=text]:focus {
+            width: 330px;
+            background-color: #fff;
+            border-color: #6dcff6;
+
+            -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+            -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+            box-shadow: 0 0 5px rgba(109,207,246,.5);
+        }
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
+
+        // ============================================ VAR
+
+        @D:280px; // size control // diametro
+
+        @R:(@D/2); // radio
+
+        @B:(@R/8);
+
+        @O: 0.6; // opacity
+
+        @A: 2s; // accelerate
+
+                   html,
+                   body{
+                       height: 100%;
+                   }
+
+        body{
+            overflow: hidden;
+        }
+
+        .hoja{
+            color: rgb(220,220,226);
+            position:absolute;
+            top:50%; left:50%;
+            margin-left:-@R;
+            margin-top:-@R;
+            width:@D;
+            height:@D;
+            text-align:center;
+            font-family: 'Open Sans', sans-serif;
+            font-size:@R/4;
+            line-height:@D;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hoja:after,
+        .hoja:before{
+            content:"";
+            border-radius:100%;
+            position:absolute;
+            top:0; left:0;
+            width:100%;
+            height:100%;
+            transform-origin:center center;
+        }
+
+        .hoja:after{
+            box-shadow: inset 0 @B 0 rgba(250, 250, 0, @O),
+            inset @B 0 0 rgba(250, 200, 0, @O),
+            inset 0 -@B 0 rgba(250, 150, 0, @O),
+            inset -@B 0 0 rgba(250, 100, 0, @O);
+            animation: rotar @A -0.5s linear infinite;
+        }
+
+        .hoja:before{
+            box-shadow: inset 0 @B 0 rgba(0, 250, 250, @O),
+            inset @B 0 0 rgba(0, 200, 200, @O),
+            inset 0 -@B 0 rgba(0, 150, 200, @O),
+            inset -@B 0 0 rgba(0, 200, 250, @O);
+            animation: rotarIz @A -0.5s linear infinite;
+        }
+
+        @keyframes rotar{
+            0%{
+                transform:rotateZ(0deg) scaleX(1) scaleY(1);
+            }
+            50%{
+                transform:rotateZ(180deg) scaleX(0.82) scaleY(0.95);
+            }
+            100%{
+                transform:rotateZ(360deg) scaleX(1) scaleY(1);
+            }
+        }
+
+        @keyframes rotarIz{
+            0%{
+                transform:rotateZ(0deg) scaleX(1) scaleY(1);
+            }
+            50%{
+                transform:rotateZ(-180deg) scaleX(0.95) scaleY(0.85);
+            }
+            100%{
+                transform:rotateZ(-360deg) scaleX(1) scaleY(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hoja">NMT</div>
+    <form method="get" action="">
+
+        <input type="text" name="tags" value="" >
+        <input type="submit" value="Find">
+        <span class="dropdown open">
+            <a class="btn btn-secondary dropdown-toggle" href="http://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sources
+            </a>
+
+            <span class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href=""><input type="checkbox" name="tvnet" value='tvnet.lv' checked>tvnet.lv</a>
+                <a class="dropdown-item" href=""><input type="checkbox" name="delfi" value='delfi.lv' checked>delfi.lv</a>
+            </span>
+        </span>
+
+
+    </form>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+</body>
+</html>
